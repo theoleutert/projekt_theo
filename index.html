@@ -1,21 +1,1233 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="de">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
-    <script src="script.js"></script>
-    <title>Document</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Theo Leutert | Mediamatiker</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;700&family=Bebas+Neue&display=swap" rel="stylesheet">
+
+<style>
+/* ============================================================
+   FARB-VARIABLEN
+   → --accent und --accent-dark kannst du hier einfach anpassen
+   ============================================================ */
+:root{
+    --bg:#0a0c12;
+    --surface:#111520;
+    --surface2:#181e2e;
+    --text:#ffffff;
+    --accent:#4d9fff;        /* Hauptfarbe – Elektroblau */
+    --accent-dark:#2d7fe0;   /* Hover-Farbe */
+    --accent-glow:rgba(77,159,255,0.18);
+    --gray:#8a9ab5;
+    --border:rgba(77,159,255,0.12);
+}
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    font-family:'Space Grotesk',sans-serif;
+    background:
+        radial-gradient(circle at top left, rgba(77,159,255,0.07), transparent 45%),
+        radial-gradient(circle at bottom right, rgba(77,159,255,0.04), transparent 40%),
+        var(--bg);
+    color:var(--text);
+    overflow-x:hidden;
+}
+
+.container{
+    width:min(1100px,90%);
+    margin:auto;
+}
+
+/* ============================================================
+   NAVIGATION
+   ============================================================ */
+nav{
+    position:fixed;
+    top:0;
+    width:100%;
+    backdrop-filter:blur(14px);
+    background:rgba(10,12,18,.82);
+    z-index:1000;
+    border-bottom:1px solid var(--border);
+}
+
+.nav-container{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:16px 5%;
+}
+
+.logo{
+    font-family:'Bebas Neue',sans-serif;
+    font-size:2rem;
+    letter-spacing:3px;
+    color:var(--accent);
+}
+
+.nav-links{
+    display:flex;
+    gap:28px;
+}
+
+.nav-links a{
+    color:var(--gray);
+    text-decoration:none;
+    font-size:.92rem;
+    font-weight:500;
+    letter-spacing:.5px;
+    transition:.25s;
+}
+
+.nav-links a:hover{
+    color:var(--accent);
+}
+
+/* ============================================================
+   HERO
+   ============================================================ */
+.hero{
+    min-height:100vh;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    padding:120px 20px 80px;
+}
+
+.hero-inner{
+    max-width:800px;
+}
+
+/* TODO: Ersetze diesen Text-Untertitel durch einen kurzen,
+         persönlichen Satz der zu dir passt – zum Beispiel
+         was dich von anderen unterscheidet. */
+.hero-tag{
+    display:inline-block;
+    font-size:.8rem;
+    font-weight:700;
+    letter-spacing:2.5px;
+    text-transform:uppercase;
+    color:var(--accent);
+    border:1px solid var(--border);
+    padding:6px 16px;
+    border-radius:30px;
+    margin-bottom:22px;
+    background:var(--accent-glow);
+}
+
+.hero h1{
+    font-family:'Bebas Neue',sans-serif;
+    font-size:clamp(4.5rem,11vw,9rem);
+    line-height:.88;
+    margin-bottom:18px;
+    letter-spacing:2px;
+}
+
+.hero h1 span{
+    color:var(--accent);
+    /* Blauer Leucht-Effekt auf dem Namen */
+    text-shadow:0 0 40px rgba(77,159,255,.45);
+}
+
+.hero p{
+    font-size:1.15rem;
+    color:var(--gray);
+    line-height:1.7;
+    max-width:580px;
+    margin:0 auto 30px;
+}
+
+.hero-btns{
+    display:flex;
+    gap:14px;
+    justify-content:center;
+    flex-wrap:wrap;
+}
+
+.btn-primary{
+    display:inline-block;
+    padding:14px 32px;
+    background:var(--accent);
+    color:#000;
+    text-decoration:none;
+    font-weight:700;
+    border-radius:50px;
+    transition:.3s;
+    font-size:.95rem;
+}
+
+.btn-primary:hover{
+    background:var(--accent-dark);
+    transform:translateY(-3px);
+    box-shadow:0 10px 28px rgba(77,159,255,.35);
+}
+
+/* TODO: Den zweiten Button kannst du auf dein Instagram-Profil
+         oder deinen TikTok-Kanal verlinken → href ändern */
+.btn-secondary{
+    display:inline-block;
+    padding:14px 32px;
+    border:1px solid var(--border);
+    color:var(--accent);
+    text-decoration:none;
+    font-weight:600;
+    border-radius:50px;
+    transition:.3s;
+    font-size:.95rem;
+}
+
+.btn-secondary:hover{
+    background:var(--accent-glow);
+    transform:translateY(-3px);
+}
+
+/* ============================================================
+   ABSCHNITTE ALLGEMEIN
+   ============================================================ */
+section{
+    padding:90px 0;
+}
+
+.section-label{
+    font-size:.75rem;
+    font-weight:700;
+    letter-spacing:3px;
+    text-transform:uppercase;
+    color:var(--accent);
+    margin-bottom:10px;
+}
+
+.section-title{
+    font-family:'Bebas Neue',sans-serif;
+    font-size:3.2rem;
+    margin-bottom:50px;
+    color:var(--text);
+    line-height:1;
+}
+
+/* ============================================================
+   ÜBER MICH
+   ============================================================ */
+.about{
+    display:grid;
+    grid-template-columns:280px 1fr;
+    gap:60px;
+    align-items:start;
+}
+
+/* TODO: Ersetze das Emoji-Platzhalter-Bild durch ein echtes
+         Profilfoto:
+         1. Foto in denselben Ordner wie diese HTML-Datei legen
+         2. Ersetze den <div class="profile-placeholder"> Block mit:
+            <img src="dein-foto.jpg" alt="Theo Leutert"
+                 style="width:100%;border-radius:20px;border:1px solid var(--border);">
+*/
+.profile-placeholder{
+    width:100%;
+    aspect-ratio:3/4;
+    border-radius:20px;
+    background:linear-gradient(160deg, var(--surface2), var(--surface));
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:5rem;
+    color:var(--accent);
+    border:1px solid var(--border);
+}
+
+.about-text p{
+    line-height:1.85;
+    color:#c5cfe0;
+    margin-bottom:18px;
+}
+
+.about-text strong{
+    color:var(--accent);
+}
+
+.info-chips{
+    display:flex;
+    flex-wrap:wrap;
+    gap:10px;
+    margin-top:24px;
+}
+
+.chip{
+    background:var(--surface2);
+    border:1px solid var(--border);
+    padding:7px 16px;
+    border-radius:30px;
+    font-size:.83rem;
+    color:var(--gray);
+}
+
+.chip span{
+    color:var(--text);
+    font-weight:600;
+}
+
+/* ============================================================
+   SPRACHEN
+   ============================================================ */
+.languages-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+    gap:18px;
+    margin-bottom:50px;
+}
+
+.lang-card{
+    background:var(--surface);
+    border:1px solid var(--border);
+    border-radius:16px;
+    padding:22px;
+    text-align:center;
+}
+
+.lang-flag{
+    font-size:2rem;
+    margin-bottom:8px;
+}
+
+.lang-name{
+    font-weight:700;
+    font-size:1rem;
+    margin-bottom:4px;
+}
+
+.lang-level{
+    font-size:.82rem;
+    color:var(--gray);
+}
+
+/* ============================================================
+   SKILLS
+   ============================================================ */
+.skills-categories{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+    gap:28px;
+}
+
+.skill-category{
+    background:var(--surface);
+    border:1px solid var(--border);
+    border-radius:20px;
+    padding:26px;
+}
+
+.skill-category h3{
+    font-size:.8rem;
+    font-weight:700;
+    letter-spacing:2px;
+    text-transform:uppercase;
+    color:var(--accent);
+    margin-bottom:20px;
+    padding-bottom:12px;
+    border-bottom:1px solid var(--border);
+}
+
+.skill{
+    margin-bottom:16px;
+}
+
+.skill:last-child{
+    margin-bottom:0;
+}
+
+.skill-header{
+    display:flex;
+    justify-content:space-between;
+    margin-bottom:7px;
+    font-size:.9rem;
+}
+
+.skill-header .pct{
+    color:var(--gray);
+    font-size:.82rem;
+}
+
+.bar{
+    height:7px;
+    background:var(--surface2);
+    border-radius:20px;
+    overflow:hidden;
+}
+
+.bar span{
+    display:block;
+    height:100%;
+    width:0;
+    background:linear-gradient(90deg, var(--accent-dark), var(--accent));
+    border-radius:20px;
+    transition:1.8s cubic-bezier(.25,.8,.25,1);
+}
+
+/* ============================================================
+   LEBENSLAUF / TIMELINE
+   ============================================================ */
+.cv-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:40px;
+}
+
+@media(max-width:800px){
+    .cv-grid{ grid-template-columns:1fr; }
+}
+
+.cv-col h3{
+    font-size:.8rem;
+    font-weight:700;
+    letter-spacing:2px;
+    text-transform:uppercase;
+    color:var(--accent);
+    margin-bottom:24px;
+    padding-bottom:10px;
+    border-bottom:1px solid var(--border);
+}
+
+.timeline{
+    list-style:none;
+    position:relative;
+    padding-left:20px;
+}
+
+.timeline::before{
+    content:'';
+    position:absolute;
+    left:0;
+    top:6px;
+    bottom:6px;
+    width:2px;
+    background:var(--border);
+}
+
+.timeline li{
+    position:relative;
+    margin-bottom:28px;
+    padding-left:18px;
+}
+
+.timeline li::before{
+    content:'';
+    position:absolute;
+    left:-24px;
+    top:6px;
+    width:10px;
+    height:10px;
+    border-radius:50%;
+    background:var(--accent);
+    border:2px solid var(--bg);
+    box-shadow:0 0 8px rgba(77,159,255,.5);
+}
+
+.tl-date{
+    font-size:.78rem;
+    color:var(--accent);
+    font-weight:700;
+    letter-spacing:.5px;
+    margin-bottom:3px;
+}
+
+.tl-title{
+    font-weight:700;
+    font-size:.97rem;
+    margin-bottom:2px;
+}
+
+.tl-sub{
+    font-size:.84rem;
+    color:var(--gray);
+    line-height:1.5;
+}
+
+/* ============================================================
+   SCHNUPPERLEHREN – VOLLSTÄNDIGE TABELLE
+   ============================================================ */
+.schnupper-table-wrap{
+    overflow-x:auto;
+    border-radius:16px;
+    border:1px solid var(--border);
+}
+
+table{
+    width:100%;
+    border-collapse:collapse;
+    font-size:.9rem;
+}
+
+th,td{
+    padding:14px 18px;
+    border-bottom:1px solid var(--border);
+    text-align:left;
+}
+
+th{
+    background:var(--surface2);
+    color:var(--accent);
+    font-size:.78rem;
+    letter-spacing:1.5px;
+    text-transform:uppercase;
+    font-weight:700;
+}
+
+tr:last-child td{
+    border-bottom:none;
+}
+
+tr:hover td{
+    background:rgba(77,159,255,.04);
+}
+
+/* ============================================================
+   PORTFOLIO
+   ============================================================ */
+.portfolio-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+    gap:22px;
+}
+
+.project{
+    background:var(--surface);
+    border-radius:20px;
+    overflow:hidden;
+    border:1px solid var(--border);
+    transition:.4s cubic-bezier(.25,.8,.25,1);
+    cursor:pointer;
+}
+
+.project:hover{
+    transform:translateY(-8px);
+    border-color:rgba(77,159,255,.35);
+    box-shadow:0 20px 40px rgba(77,159,255,.1);
+}
+
+/* TODO: Ersetze diese grauen Platzhalter-Boxen durch echte Bilder:
+         <div class="project-image" style="background:url('dein-bild.jpg') center/cover"></div>
+         Oder komplett: <img src="dein-bild.jpg" alt="..." style="width:100%;height:220px;object-fit:cover;">
+*/
+.project-image{
+    height:210px;
+    background:linear-gradient(135deg, var(--surface2) 0%, #1a2035 100%);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:3rem;
+    color:rgba(77,159,255,.25);
+}
+
+.project-content{
+    padding:20px;
+}
+
+.project-content h3{
+    margin-bottom:7px;
+    font-size:1rem;
+}
+
+.project-content p{
+    font-size:.86rem;
+    color:var(--gray);
+    line-height:1.5;
+}
+
+.project-tag{
+    display:inline-block;
+    margin-top:12px;
+    font-size:.74rem;
+    font-weight:700;
+    letter-spacing:1px;
+    text-transform:uppercase;
+    color:var(--accent);
+    background:var(--accent-glow);
+    padding:4px 10px;
+    border-radius:20px;
+}
+
+/* ============================================================
+   KONTAKT
+   ============================================================ */
+.contact-layout{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:50px;
+    align-items:start;
+}
+
+.contact-info p{
+    color:var(--gray);
+    line-height:1.8;
+    margin-bottom:24px;
+}
+
+.contact-detail{
+    display:flex;
+    flex-direction:column;
+    gap:12px;
+}
+
+.contact-item{
+    display:flex;
+    align-items:center;
+    gap:14px;
+    background:var(--surface);
+    border:1px solid var(--border);
+    border-radius:14px;
+    padding:14px 18px;
+    text-decoration:none;
+    color:var(--text);
+    transition:.25s;
+    font-size:.9rem;
+}
+
+.contact-item:hover{
+    border-color:rgba(77,159,255,.4);
+    background:var(--accent-glow);
+    color:var(--accent);
+}
+
+.contact-item .icon{
+    font-size:1.3rem;
+    flex-shrink:0;
+}
+
+form{
+    display:grid;
+    gap:16px;
+}
+
+input,
+textarea{
+    background:var(--surface);
+    border:1px solid var(--border);
+    padding:14px 16px;
+    color:white;
+    border-radius:12px;
+    font-family:inherit;
+    font-size:.92rem;
+    transition:.2s;
+    outline:none;
+}
+
+input:focus,
+textarea:focus{
+    border-color:rgba(77,159,255,.5);
+    background:var(--surface2);
+}
+
+textarea{
+    min-height:140px;
+    resize:vertical;
+}
+
+button[type="submit"]{
+    background:var(--accent);
+    color:#000;
+    border:none;
+    padding:15px;
+    font-weight:700;
+    border-radius:12px;
+    cursor:pointer;
+    transition:.3s;
+    font-family:inherit;
+    font-size:.95rem;
+}
+
+button[type="submit"]:hover{
+    background:var(--accent-dark);
+    transform:translateY(-3px);
+    box-shadow:0 8px 22px rgba(77,159,255,.3);
+}
+
+/* ============================================================
+   FOOTER
+   ============================================================ */
+footer{
+    text-align:center;
+    padding:40px 20px;
+    border-top:1px solid var(--border);
+    color:var(--gray);
+    font-size:.88rem;
+}
+
+.socials{
+    display:flex;
+    justify-content:center;
+    gap:22px;
+    margin-top:14px;
+}
+
+.socials a{
+    color:var(--accent);
+    text-decoration:none;
+    font-weight:600;
+    transition:.2s;
+}
+
+.socials a:hover{
+    opacity:.75;
+}
+
+/* ============================================================
+   FADE-IN ANIMATION
+   ============================================================ */
+.fade{
+    opacity:0;
+    transform:translateY(35px);
+    transition:.9s ease;
+}
+
+.fade.show{
+    opacity:1;
+    transform:translateY(0);
+}
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+@media(max-width:768px){
+
+    .about{
+        grid-template-columns:1fr;
+    }
+
+    .profile-placeholder{
+        aspect-ratio:1;
+        max-width:220px;
+        margin:auto;
+    }
+
+    .nav-links{
+        gap:14px;
+        font-size:.85rem;
+    }
+
+    .hero h1{
+        font-size:4.2rem;
+    }
+
+    .contact-layout{
+        grid-template-columns:1fr;
+    }
+}
+</style>
 </head>
 <body>
-    <header>
-        
-    </header>
-    <main>
 
-    </main>
-    <footer>
-        
-    </footer>
+<!-- ============================================================
+     NAVIGATION
+     ============================================================ -->
+<nav>
+    <div class="nav-container">
+        <!-- TODO: Das Logo kannst du auch durch ein eigenes SVG-Logo ersetzen -->
+        <div class="logo">TL</div>
+
+        <div class="nav-links">
+            <a href="#about">Über mich</a>
+            <a href="#skills">Skills</a>
+            <a href="#cv">Lebenslauf</a>
+            <a href="#portfolio">Portfolio</a>
+            <a href="#contact">Kontakt</a>
+        </div>
+    </div>
+</nav>
+
+<!-- ============================================================
+     HERO
+     ============================================================ -->
+<section class="hero">
+    <div class="hero-inner">
+        <div class="hero-tag">Angehender Mediamatiker · Bern</div>
+
+        <h1>THEO <span>LEUTERT</span></h1>
+
+        <p>
+            Kreativ, zuverlässig und leidenschaftlich in Fotografie,
+            Videoproduktion und digitalem Design –
+            bereit für die Lehre als Mediamatiker.
+        </p>
+
+        <div class="hero-btns">
+            <a href="#contact" class="btn-primary">Kontakt aufnehmen</a>
+            <!-- TODO: Ersetze den Link mit deinem echten Instagram-Profil -->
+            <a href="https://instagram.com/theo4cars" target="_blank" class="btn-secondary">@theo4cars ansehen</a>
+        </div>
+    </div>
+</section>
+
+<!-- ============================================================
+     ÜBER MICH
+     ============================================================ -->
+<section id="about" class="container fade">
+    <div class="section-label">Über mich</div>
+    <h2 class="section-title">Wer ist Theo?</h2>
+
+    <div class="about">
+
+        <!-- TODO: Profilfoto einsetzen (Anleitung im CSS-Kommentar oben) -->
+        <div class="profile-placeholder">📷</div>
+
+        <div class="about-text">
+            <p>
+                Ich bin Theo Leutert aus Bern und bereite mich im
+                <strong>10. ICT-Schuljahr bei der BiCT</strong> motiviert auf die
+                Lehre als Mediamatiker vor.
+                Kreativität, Humor, Hilfsbereitschaft und Zuverlässigkeit
+                zeichnen mich aus – ich denke vernetzt und arbeite sorgfältig.
+            </p>
+            <p>
+                Fotografieren und Filmen sind meine grössten Leidenschaften.
+                Besonders gerne halte ich schöne Autos mit der Kamera fest.
+                Die Aufnahmen bearbeite ich mit Lightroom, Photoshop,
+                CapCut und DaVinci Resolve und veröffentliche sie auf
+                TikTok und Instagram unter <strong>@theo4cars</strong>.
+            </p>
+            <p>
+                Neben der Medienwelt begeistern mich <strong>Pfadi</strong>
+                (Leitung eines Fähnli), Gamen, Velofahren und Skifahren.
+            </p>
+
+            <div class="info-chips">
+                <div class="chip">📍 <span>Bern</span></div>
+                <div class="chip">🎂 <span>Jahrgang 2010</span></div>
+                <div class="chip">🇨🇭 <span>Schweizer</span></div>
+                <div class="chip">🚗 <span>@theo4cars</span></div>
+                <div class="chip">⚜️ <span>Pfadi Patria</span></div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ============================================================
+     SPRACHEN
+     ============================================================ -->
+<section id="sprachen" class="container fade">
+    <div class="section-label">Sprachkenntnisse</div>
+    <h2 class="section-title">Sprachen</h2>
+
+    <div class="languages-grid">
+        <div class="lang-card">
+            <div class="lang-flag">🇩🇪</div>
+            <div class="lang-name">Deutsch</div>
+            <div class="lang-level">Erstsprache (Muttersprache)</div>
+        </div>
+        <div class="lang-card">
+            <div class="lang-flag">🇫🇷</div>
+            <div class="lang-name">Französisch</div>
+            <div class="lang-level">Schulkenntnisse · 7 Jahre</div>
+        </div>
+        <div class="lang-card">
+            <div class="lang-flag">🇬🇧</div>
+            <div class="lang-name">Englisch</div>
+            <div class="lang-level">Schulkenntnisse · 5 Jahre</div>
+        </div>
+    </div>
+</section>
+
+<!-- ============================================================
+     SKILLS
+     ============================================================ -->
+<section id="skills" class="container fade">
+    <div class="section-label">Fachkenntnisse</div>
+    <h2 class="section-title">Skills</h2>
+
+    <!-- TODO: Die Prozentzahlen kannst du nach eigenem Empfinden anpassen -->
+    <div class="skills-categories">
+
+        <div class="skill-category">
+            <h3>📸 Foto & Video</h3>
+
+            <div class="skill">
+                <div class="skill-header"><span>Fotografie</span><span class="pct">70%</span></div>
+                <div class="bar"><span data-width="70%"></span></div>
+            </div>
+            <div class="skill">
+                <div class="skill-header"><span>Adobe Lightroom</span><span class="pct">90%</span></div>
+                <div class="bar"><span data-width="90%"></span></div>
+            </div>
+            <div class="skill">
+                <div class="skill-header"><span>Adobe Photoshop</span><span class="pct">65%</span></div>
+                <div class="bar"><span data-width="65%"></span></div>
+            </div>
+            <div class="skill">
+                <div class="skill-header"><span>Videografie</span><span class="pct">90%</span></div>
+                <div class="bar"><span data-width="90%"></span></div>
+            </div>
+            <div class="skill">
+                <div class="skill-header"><span>DaVinci Resolve</span><span class="pct">85%</span></div>
+                <div class="bar"><span data-width="85%"></span></div>
+            </div>
+            <div class="skill">
+                <div class="skill-header"><span>CapCut</span><span class="pct">50%</span></div>
+                <div class="bar"><span data-width="50%"></span></div>
+            </div>
+        </div>
+
+        <div class="skill-category">
+            <h3>🎨 Adobe Creative Suite</h3>
+
+            <div class="skill">
+                <div class="skill-header"><span>Adobe InDesign</span><span class="pct">70%</span></div>
+                <div class="bar"><span data-width="70%"></span></div>
+            </div>
+            <div class="skill">
+                <div class="skill-header"><span>Adobe Illustrator</span><span class="pct">70%</span></div>
+                <div class="bar"><span data-width="70%"></span></div>
+            </div>
+            <div class="skill">
+                <div class="skill-header"><span>Adobe After Effects</span><span class="pct">35%</span></div>
+                <div class="bar"><span data-width="35%"></span></div>
+            </div>
+            <div class="skill">
+                <div class="skill-header"><span>Adobe Premiere Pro</span><span class="pct">70%</span></div>
+                <div class="bar"><span data-width="70%"></span></div>
+            </div>
+        </div>
+
+        <div class="skill-category">
+            <h3>💻 Web & Code</h3>
+
+            <div class="skill">
+                <div class="skill-header"><span>HTML / CSS</span><span class="pct">75%</span></div>
+                <div class="bar"><span data-width="75%"></span></div>
+            </div>
+            <div class="skill">
+                <div class="skill-header"><span>Figma</span><span class="pct">65%</span></div>
+                <div class="bar"><span data-width="65%"></span></div>
+            </div>
+            <div class="skill">
+                <div class="skill-header"><span>Arduino (Programmieren)</span><span class="pct">65%</span></div>
+                <div class="bar"><span data-width="65%"></span></div>
+            </div>
+            <div class="skill">
+                <div class="skill-header"><span>Microsoft 365</span><span class="pct">85%</span></div>
+                <div class="bar"><span data-width="85%"></span></div>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<!-- ============================================================
+     LEBENSLAUF / TIMELINE
+     ============================================================ -->
+<section id="cv" class="container fade">
+    <div class="section-label">Werdegang</div>
+    <h2 class="section-title">Lebenslauf</h2>
+
+    <div class="cv-grid">
+
+        <!-- Linke Spalte: Ausbildung -->
+        <div class="cv-col">
+            <h3>🎓 Ausbildung</h3>
+            <ul class="timeline">
+                <li>
+                    <div class="tl-date">2025 – Heute</div>
+                    <div class="tl-title">10. ICT-Schuljahr</div>
+                    <div class="tl-sub">BiCT AG, Bern<br>Vorbereitung auf die Lehre als Mediamatiker</div>
+                </li>
+                <li>
+                    <div class="tl-date">2022 – 2025</div>
+                    <div class="tl-title">Sekundarstufe</div>
+                    <div class="tl-sub">Schule Manuel, Bern</div>
+                </li>
+                <li>
+                    <div class="tl-date">2016 – 2022</div>
+                    <div class="tl-title">Primarschule</div>
+                    <div class="tl-sub">Primarschule Kirchenfeld, Bern</div>
+                </li>
+            </ul>
+        </div>
+
+        <!-- Rechte Spalte: Berufserfahrung & Kurse -->
+        <div class="cv-col">
+            <h3>💼 Erfahrung & Kurse</h3>
+            <ul class="timeline">
+                <li>
+                    <div class="tl-date">Okt. 2024 – März 2025</div>
+                    <div class="tl-title">Werbetechniker «Yblick»</div>
+                    <div class="tl-sub">Typono GmbH, Bern<br>1 Tag/Woche Mitarbeit im Betrieb</div>
+                </li>
+                <li>
+                    <div class="tl-date">Aug. – Dez. 2025</div>
+                    <div class="tl-title">Fotokurs</div>
+                    <div class="tl-sub">Schule für Gestaltung, Bern</div>
+                </li>
+                <li>
+                    <div class="tl-date">Juli 2023</div>
+                    <div class="tl-title">Interactive Media Designer</div>
+                    <div class="tl-sub">Schule für Gestaltung, Bern</div>
+                </li>
+                <li>
+                    <div class="tl-date">2022/2023</div>
+                    <div class="tl-title">Freifach Informatik</div>
+                    <div class="tl-sub">Schule Manuel, Bern</div>
+                </li>
+            </ul>
+        </div>
+
+    </div>
+</section>
+
+<!-- ============================================================
+     SCHNUPPERLEHREN (vollständige Tabelle aus dem Lebenslauf)
+     TODO: Weitere Schnupperlehren einfach als neue <tr> hinzufügen
+     ============================================================ -->
+<section id="schnupper" class="container fade">
+    <div class="section-label">Berufliche Orientierung</div>
+    <h2 class="section-title">Schnupperlehren</h2>
+
+    <div class="schnupper-table-wrap">
+        <table>
+            <thead>
+                <tr>
+                    <th>Datum</th>
+                    <th>Beruf</th>
+                    <th>Betrieb</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>30. Mai 2025</td>
+                    <td>Mediamatiker</td>
+                    <td>Berner Fachhochschule, Bern</td>
+                </tr>
+                <tr>
+                    <td>23. April 2025</td>
+                    <td>Mediamatiker</td>
+                    <td>Bernmobil, Bern</td>
+                </tr>
+                <tr>
+                    <td>27. März 2025</td>
+                    <td>Mediamatiker</td>
+                    <td>BiCT AG, Bern</td>
+                </tr>
+                <tr>
+                    <td>20. März 2025</td>
+                    <td>Mediamatiker</td>
+                    <td>KARGO Kommunikation, Bern</td>
+                </tr>
+                <tr>
+                    <td>10. März 2025</td>
+                    <td>Mediamatiker</td>
+                    <td>Berufsbildungscenter, Bern</td>
+                </tr>
+                <tr>
+                    <td>3. März 2025</td>
+                    <td>Mediamatiker & Interactive Media Designer</td>
+                    <td>Swisscom AG, Zürich</td>
+                </tr>
+                <tr>
+                    <td>18. Feb. 2025</td>
+                    <td>Gestalter Werbetechniker</td>
+                    <td>Lettra Design Werbetechnik AG, Bern-Liebefeld</td>
+                </tr>
+                <tr>
+                    <td>29. Mai 2024</td>
+                    <td>Interactive Media Designer</td>
+                    <td>Diff. Kommunikation AG, Bern</td>
+                </tr>
+                <tr>
+                    <td>24. April 2024</td>
+                    <td>Gestalter Werbetechniker</td>
+                    <td>Form AG, Bern</td>
+                </tr>
+                <tr>
+                    <td>15.–17. April 2024</td>
+                    <td>Automobil-Fachmann</td>
+                    <td>Belwag AG, Bern</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</section>
+
+<!-- ============================================================
+     PORTFOLIO
+     TODO: Fülle die Projektkarten mit echten Bildern und
+           Beschreibungen deiner besten Arbeiten
+     ============================================================ -->
+<section id="portfolio" class="container fade">
+    <div class="section-label">Meine Arbeiten</div>
+    <h2 class="section-title">Portfolio</h2>
+
+    <div class="portfolio-grid">
+
+        <div class="project">
+            <!-- TODO: Platzhalter durch echtes Bild ersetzen (Kommentar im CSS) -->
+            <div class="project-image">🚗</div>
+            <div class="project-content">
+                <h3>Car Photography</h3>
+                <p>Professionelle Fahrzeugfotografie mit Lightroom-Bearbeitung.</p>
+                <div class="project-tag">Fotografie</div>
+            </div>
+        </div>
+
+        <div class="project">
+            <div class="project-image">🎬</div>
+            <div class="project-content">
+                <h3>Instagram Reels</h3>
+                <p>Automotive-Kurzvideos für Social Media, geschnitten mit CapCut.</p>
+                <div class="project-tag">Video</div>
+            </div>
+        </div>
+
+        <div class="project">
+            <div class="project-image">📱</div>
+            <div class="project-content">
+                <h3>TikTok Content</h3>
+                <p>Kreative Automotive-Storys auf @theo4cars.</p>
+                <div class="project-tag">Social Media</div>
+            </div>
+        </div>
+
+        <div class="project">
+            <div class="project-image">✏️</div>
+            <div class="project-content">
+                <h3>Photo Retouching</h3>
+                <p>Professionelle Bildbearbeitung in Photoshop und Lightroom.</p>
+                <div class="project-tag">Bearbeitung</div>
+            </div>
+        </div>
+
+        <div class="project">
+            <div class="project-image">🎮</div>
+            <div class="project-content">
+                <h3>Eigenes Game</h3>
+                <p>Selbst programmiertes Spiel – Coding-Projekt aus der Freizeit.</p>
+                <div class="project-tag">Programmieren</div>
+            </div>
+        </div>
+
+        <!-- TODO: Hier kannst du weitere Projekte hinzufügen,
+                   zum Beispiel Werbetechnik-Arbeiten von Typono -->
+        <div class="project">
+            <div class="project-image">🏷️</div>
+            <div class="project-content">
+                <h3>Werbetechnik «Yblick»</h3>
+                <p>Praxisprojekte bei Typono GmbH – Gestaltung & Produktion.</p>
+                <div class="project-tag">Werbetechnik</div>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<!-- ============================================================
+     KONTAKT
+     ============================================================ -->
+<section id="contact" class="container fade">
+    <div class="section-label">Kontakt</div>
+    <h2 class="section-title">Schreib mir</h2>
+
+    <div class="contact-layout">
+
+        <div class="contact-info">
+            <p>
+                Du möchtest mich für eine Schnupperlehre einladen,
+                hast eine Frage zu meinen Arbeiten oder willst einfach
+                Hallo sagen? Meld dich gerne direkt!
+            </p>
+
+            <div class="contact-detail">
+                <!-- TODO: Telefonnummer stimmt aus dem Lebenslauf – kannst du so lassen -->
+                <a href="tel:+41774907733" class="contact-item">
+                    <span class="icon">📞</span>
+                    077 490 77 33
+                </a>
+                <a href="mailto:theo.leutert@gmx.ch" class="contact-item">
+                    <span class="icon">✉️</span>
+                    theo.leutert@gmx.ch
+                </a>
+                <a href="https://instagram.com/theo4cars" target="_blank" class="contact-item">
+                    <span class="icon">📸</span>
+                    Instagram @theo4cars
+                </a>
+                <a href="https://tiktok.com/@theo4cars" target="_blank" class="contact-item">
+                    <span class="icon">🎵</span>
+                    TikTok @theo4cars
+                </a>
+            </div>
+        </div>
+
+        <form id="contactForm">
+            <input type="text" placeholder="Dein Name" required>
+            <input type="email" placeholder="Deine E-Mail" required>
+            <!-- TODO: Falls du ein echtes Kontaktformular willst,
+                       schaue dir Dienste wie Formspree.io an (kostenlos) -->
+            <textarea placeholder="Deine Nachricht..." required></textarea>
+            <button type="submit">Nachricht senden</button>
+        </form>
+    </div>
+</section>
+
+<!-- ============================================================
+     FOOTER
+     ============================================================ -->
+<footer>
+    <p>© 2026 Theo Leutert · Angehender Mediamatiker · Bern</p>
+
+    <div class="socials">
+        <a href="https://instagram.com/theo4cars" target="_blank">Instagram</a>
+        <a href="https://tiktok.com/@theo4cars" target="_blank">TikTok</a>
+        <!-- TODO: LinkedIn-Profil erstellen und Link hier einfügen -->
+        <a href="#" target="_blank">LinkedIn</a>
+    </div>
+</footer>
+
+<!-- ============================================================
+     JAVASCRIPT
+     ============================================================ -->
+<script>
+// Fade-In Animation beim Scrollen
+const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+        if(entry.isIntersecting){
+            entry.target.classList.add('show');
+        }
+    });
+}, { threshold: 0.1 });
+
+document.querySelectorAll('.fade').forEach(el => observer.observe(el));
+
+// Skill-Balken animieren wenn sichtbar
+const bars = document.querySelectorAll('.bar span');
+const skillObserver = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+        if(entry.isIntersecting){
+            entry.target.style.width = entry.target.dataset.width;
+        }
+    });
+}, { threshold: 0.3 });
+
+bars.forEach(bar => skillObserver.observe(bar));
+
+// Kontaktformular (Demo)
+// TODO: Für ein echtes Formular → https://formspree.io einrichten
+//       Dort kostenlos registrieren, Formular-ID erhalten,
+//       und die action unten ergänzen
+document.getElementById('contactForm').addEventListener('submit', function(e){
+    e.preventDefault();
+    alert('✅ Vielen Dank für deine Nachricht, Theo meldet sich bald!');
+    this.reset();
+});
+</script>
+
 </body>
 </html>
